@@ -1,6 +1,17 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-11T22:00:36.481Z",
-  "count": 0,
-  "participants": []
+  "updated_at": "2026-08-12T10:04:50.761Z",
+  "count": 1,
+  "participants": [
+    {
+      "github": "hoklims",
+      "name": "Guillaume Fossier",
+      "discord": "Hoklims",
+      "linkedin": "https://www.linkedin.com/in/guillaume-fossier-542179125",
+      "tools": "Codex + Claude code (fusion)",
+      "piste": "Magic secret",
+      "registered_at": "2026-08-12T10:04:42Z",
+      "issue": 10
+    }
+  ]
 }
