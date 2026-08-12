@@ -1,0 +1,94 @@
+<!--
+  Bandeau du dépôt : une identité, jamais une donnée.
+
+  La première version portait la date, les horaires, le format et le lot. Tout
+  ça vit dans le tableau en tête du README, à un seul endroit. En le recopiant
+  dans une image, on créait une seconde source de vérité que personne ne pense à
+  ouvrir dans un éditeur SVG, et elle a continué d'annoncer un format abandonné
+  pendant que tout le reste disait l'inverse.
+
+  Rien ici ne doit changer si la date, l'horaire ou le lot changent.
+
+  Le nom porte le jeu de mots à lui seul : « AI » est inséré dans « Level », et
+  seule la couleur le révèle. C'est la raison d'être de ce bandeau — en texte
+  brut, la casse `lAIvel` suffit ; ici, le bleu de marque fait le travail.
+
+  Le champignon reste vert. En bleu il se fondrait dans le fond, qui est déjà
+  un dégradé de bleu marine, et le bandeau reprend ainsi deux des trois couleurs
+  de son propre filet.
+
+  Le champignon est volontairement générique : pas d'yeux, pas les proportions
+  du sprite Nintendo, et la palette est la nôtre. La forme et le pixel art ne
+  sont pas protégeables, le sprite exact l'est. On garde l'évocation, pas la
+  copie.
+
+  Le fichier a changé de nom en même temps que son contenu : le proxy d'images
+  de GitHub met en cache par URL, et une bannière corrigée sous le même nom peut
+  rester invisible dans le README pendant des heures.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="lAIvel Up — Hackathon AI-Driven Dev">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020244"/>
+      <stop offset="55%" stop-color="#0b0b3d"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dd5475"/>
+      <stop offset="50%" stop-color="#4e4ef9"/>
+      <stop offset="100%" stop-color="#66cc99"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#4e4ef9" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#4e4ef9" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#4e4ef9" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+  <ellipse cx="960" cy="80" rx="380" ry="230" fill="url(#glow)"/>
+
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <text x="72" y="152" fill="#ffffff" font-size="88" font-weight="800" letter-spacing="2"
+      >L<tspan fill="#4e4ef9">AI</tspan>VEL UP</text>
+    <rect x="74" y="180" width="300" height="7" rx="3.5" fill="url(#accent)"/>
+    <text x="72" y="236" fill="#c9d1e8" font-size="25" font-weight="400">Construis l'outil qui situe le niveau IA d'un développeur.</text>
+  </g>
+
+  <!--
+    Champignon pixel, grille de 14 px, origine (880, 74).
+
+    Deux pièges évités, tous deux constatés au rendu de la version précédente :
+
+    - Deux pois symétriques dans le chapeau se lisent comme des yeux, et une
+      flèche sombre entre eux comme des sourcils. Le résultat évoquait le sprite
+      Nintendo bien plus qu'un champignon neutre — l'inverse du but. Les pois
+      sont donc asymétriques, de tailles inégales, et aucun n'est centré.
+    - Les traits de vitesse ajoutés sous le pied pour dire la montée se lisaient
+      comme des pattes. Supprimés : le mot « UP » du nom porte déjà le
+      mouvement, et le bandeau n'a pas besoin de le dire deux fois.
+
+    Grille portée de 14 à 16 px : à 14, le champignon ne pesait pas assez face à
+    un titre de 88 px et flottait dans le vide de droite.
+  -->
+  <g shape-rendering="crispEdges">
+    <!-- chapeau -->
+    <rect x="914" y="70" width="64" height="16" fill="#66cc99"/>
+    <rect x="882" y="86" width="128" height="16" fill="#66cc99"/>
+    <rect x="866" y="102" width="160" height="16" fill="#66cc99"/>
+    <rect x="850" y="118" width="192" height="16" fill="#66cc99"/>
+    <rect x="850" y="134" width="192" height="16" fill="#66cc99"/>
+    <rect x="850" y="150" width="192" height="16" fill="#66cc99"/>
+    <!-- pois asymétriques : jamais deux de même taille à la même hauteur -->
+    <rect x="882" y="102" width="48" height="32" fill="#ffffff"/>
+    <rect x="914" y="86" width="16" height="16" fill="#ffffff"/>
+    <rect x="962" y="134" width="32" height="16" fill="#ffffff"/>
+    <!-- pied -->
+    <rect x="898" y="166" width="96" height="16" fill="#e8f5ee"/>
+    <rect x="898" y="182" width="96" height="16" fill="#e8f5ee"/>
+    <rect x="914" y="198" width="64" height="16" fill="#e8f5ee"/>
+  </g>
+</svg>

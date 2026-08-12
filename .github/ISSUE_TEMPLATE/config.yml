@@ -1,0 +1,8 @@
+# Invitation permanente, vérifiée auprès de l'API Discord : pas d'expiration ni
+# de limite d'usage. C'est la condition pour la mettre dans un README qui
+# survivra à l'événement.
+blank_issues_enabled: false
+contact_links:
+  - name: Discord AI-Driven Dev
+    url: https://discord.gg/VNDZnER8h7
+    about: Une question sur le hackathon ? Le salon de la communauté est le bon endroit.

@@ -1,0 +1,80 @@
+name: Garde-fou
+
+# Ce dépôt est public et contient le matériel d'évaluation.
+# Deux erreurs seraient irrattrapables : publier les profils cachés,
+# ou publier les réponses attendues. Ce workflow les rend impossibles.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  fuite:
+    name: Rien de confidentiel n'a fuité
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Aucun fichier ni dossier confidentiel
+        run: |
+          set -euo pipefail
+          interdits=$(find . -path ./.git -prune -o \
+            \( -name 'profiles-caches' -o -name '_*' -o -iname '*CORE-TEAM*' \) -print)
+          if [ -n "$interdits" ]; then
+            echo "::error::Matériel confidentiel détecté dans un dépôt public :"
+            echo "$interdits"
+            exit 1
+          fi
+          echo "Aucun fichier confidentiel."
+
+      - name: Aucune réponse de profil caché dans le contenu
+        run: |
+          set -euo pipefail
+          # ⚠️ CETTE PLAGE DOIT SUIVRE LE NOMBRE DE PROFILS CACHÉS.
+          # Aujourd'hui : p01 à p04 publics, p05 à p08 cachés. Un cinquième
+          # profil caché impose d'étendre `p0[5-8]` ici, sinon il passe.
+          # (Un motif attrape-tout `p[0-9][0-9]` a été écarté : il se déclenche
+          # sur du texte légitime, et un garde-fou qui crie à tort se fait
+          # désactiver par la personne qui publie à midi sous pression.)
+          #
+          # `directory.json` est exclu : il contient des pseudos GitHub que nous
+          # ne choisissons pas. Un login comme `dev-p07` déclencherait l'alerte
+          # et bloquerait une inscription parfaitement légitime.
+          if grep -rInE '\bp0[5-8]\b' --include='*.md' --include='*.json' \
+               --exclude-dir=.git --exclude-dir=.github \
+               --exclude=directory.json . ; then
+            echo "::error::Un profil caché est mentionné. Seuls p01 à p04 sont publics."
+            exit 1
+          fi
+          echo "Aucune mention de profil caché."
+
+  tests:
+    name: L'annuaire se comporte comme prévu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test .github/scripts/update-directory.test.mjs
+
+  secrets:
+    name: Aucun secret
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Le binaire et non `gitleaks/gitleaks-action`, qui exige une licence
+      # payante dès que le dépôt appartient à une organisation. Même outil,
+      # même règles, sans la facture ni un secret de plus à tenir.
+      - name: Scanner l'historique
+        env:
+          VERSION: 8.28.0
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          ./gitleaks git --no-banner --redact --exit-code 1 .
+

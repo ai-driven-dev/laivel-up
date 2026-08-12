@@ -1,0 +1,58 @@
+name: Rendre son projet
+description: À remplir avant la clôture, le lundi à 12h.
+title: "Rendu: "
+labels:
+  - rendu
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **La date et l'heure de ce formulaire font foi.** Il ferme le lundi à 12h.
+
+        Vérifie avant d'envoyer que ton dépôt est public et que ton README permet de lancer l'outil.
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Édition
+      options:
+        - LAIVEL UP (28 au 31 août 2026)
+    validations:
+      required: true
+  - type: input
+    id: discord
+    attributes:
+      label: Pseudo Discord
+      description: Le même que celui de ton inscription.
+      placeholder: ton_pseudo
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: Lien de ton dépôt
+      description: Public, sous licence MIT.
+      placeholder: https://github.com/toi/ton-projet
+    validations:
+      required: true
+  - type: input
+    id: demo
+    attributes:
+      label: Lien de ta vidéo ou de ton GIF
+      description: Deux minutes maximum, et compréhensible sans le son — elle sera publiée muette. Peut aussi être un fichier dans le repo, auquel cas donne son lien direct.
+      placeholder: https://…
+    validations:
+      required: true
+  - type: textarea
+    id: pitch
+    attributes:
+      label: Ton approche en trois lignes
+      description: Ce que tu mesures et pourquoi. Le détail va dans ta page de méthode.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Avant d'envoyer
+      options:
+        - label: Aucune clé d'API n'est présente dans le code ni dans l'historique Git
+          required: true

@@ -1,0 +1,66 @@
+name: Annuaire des inscrits
+
+# Une issue d'inscription ajoute son auteur à directory.json.
+# Une issue de désinscription l'en retire. Dans les deux cas l'issue est
+# fermée avec un mot, et le fichier committé sur main.
+#
+# Le label est posé par le formulaire d'issue, côté serveur : personne ne
+# peut le mettre à la main sans droits de triage. C'est lui le déclencheur,
+# pas le titre ni le corps, qui eux sont libres.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: directory
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'inscription')
+      || contains(github.event.issue.labels.*.name, 'desinscription')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Mettre à jour l'annuaire
+        id: update
+        run: |
+          if [ "${{ contains(github.event.issue.labels.*.name, 'inscription') }}" = "true" ]; then
+            node .github/scripts/update-directory.mjs inscription
+          else
+            node .github/scripts/update-directory.mjs desinscription
+          fi
+
+      - name: Committer
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add directory.json
+          git diff --staged --quiet && { echo 'Rien à committer.'; exit 0; }
+          git commit -m "chore(annuaire): ${{ steps.update.outputs.login }} (#${{ github.event.issue.number }})"
+          git push
+
+      - name: Répondre et fermer
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INSCRIPTION: ${{ contains(github.event.issue.labels.*.name, 'inscription') }}
+          COUNT: ${{ steps.update.outputs.count }}
+        run: |
+          if [ "$INSCRIPTION" = "true" ]; then
+            MESSAGE="C'est noté, tu es le n°$COUNT sur la liste 🎉 Rendez-vous sur le Discord à l'ouverture, le vendredi à midi. Si tu ne peux plus venir, ouvre une issue « Se désinscrire », ça prend dix secondes."
+          else
+            MESSAGE="Tu es retiré de la liste. Merci de nous avoir prévenus, et à une prochaine."
+          fi
+          gh issue comment "${{ github.event.issue.number }}" --body "$MESSAGE"
+          gh issue close "${{ github.event.issue.number }}"

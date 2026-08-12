@@ -1,0 +1,69 @@
+name: S'inscrire au hackathon
+description: Inscris-toi à LAIVEL UP
+title: "Inscription: "
+labels:
+  - inscription
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ton compte GitHub sert de profil public. Ton inscription est visible de tous.
+
+        À la clôture, tu rendras ton projet via un second formulaire.
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Édition
+      description: À quel hackathon tu t'inscris ?
+      options:
+        - LAIVEL UP (28 au 31 août 2026)
+    validations:
+      required: true
+  - type: input
+    id: display_name
+    attributes:
+      label: Nom d'affichage
+      description: Le nom sous lequel tu apparaîtras publiquement.
+      placeholder: Ton nom
+    validations:
+      required: true
+  - type: input
+    id: discord
+    attributes:
+      label: Pseudo Discord
+      description: Pour te retrouver dans le canal de l'événement.
+      placeholder: ton_pseudo
+    validations:
+      required: true
+  - type: input
+    id: linkedin
+    attributes:
+      label: Ton LinkedIn
+      description: Optionnel. Affiché à côté de ton nom sur la page du hackathon, pour qu'on puisse te suivre.
+      placeholder: https://www.linkedin.com/in/ton-profil
+    validations:
+      required: false
+  - type: input
+    id: tools
+    attributes:
+      label: Tes outils
+      description: Ce avec quoi tu travailles au quotidien. Aucune obligation, ça sert juste à savoir qui utilise quoi.
+      placeholder: Claude Code, Cursor, Codex, framework AIDD…
+    validations:
+      required: false
+  - type: textarea
+    id: piste
+    attributes:
+      label: La piste que tu comptes explorer
+      description: Optionnel, et tu pourras en changer. Ça permet aux gens qui creusent la même chose de se trouver.
+      placeholder: Une app de questionnaire adaptatif, un agent qui lit l'activité Git…
+    validations:
+      required: false
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      description: Obligatoire pour participer.
+      options:
+        - label: J'accepte de publier mon projet sous licence MIT, ce qui autorise AI-Driven Dev à le réutiliser, y compris dans un cadre commercial, en m'attribuant le travail.
+          required: true
