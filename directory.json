@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-12T10:04:50.761Z",
-  "count": 1,
+  "updated_at": "2026-08-12T11:38:54.446Z",
+  "count": 2,
   "participants": [
     {
       "github": "hoklims",
@@ -12,6 +12,16 @@
       "piste": "Magic secret",
       "registered_at": "2026-08-12T10:04:42Z",
       "issue": 10
+    },
+    {
+      "github": "crocogiciel",
+      "name": "Guillaume Monrolin",
+      "discord": "crocogiciel",
+      "linkedin": "https://www.linkedin.com/in/guillaume-monrolin-000345134",
+      "tools": "Claude Code, AIDD Framework, Docker SBX",
+      "piste": "(Disclaimer: je ne suis pas game designer, désolé si j'ai pas le bon vocabulaire) J'aimerais bien faire un jeux décisionnel / gestion / simulation où le but c'est de développer et déployer en prod un logiciel. \nOn pourrait avoir des milestones du coup sur toutes les étapes etc. \n===== À refiner =====",
+      "registered_at": "2026-08-12T11:38:36Z",
+      "issue": 11
     }
   ]
 }
