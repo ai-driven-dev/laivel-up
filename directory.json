@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-12T15:12:52.330Z",
-  "count": 4,
+  "updated_at": "2026-08-12T15:18:29.307Z",
+  "count": 5,
   "participants": [
     {
       "github": "hoklims",
@@ -42,6 +42,16 @@
       "piste": "Un outil CLI sûrement avec un rendu web",
       "registered_at": "2026-08-12T15:12:36Z",
       "issue": 13
+    },
+    {
+      "github": "BlandineRdl",
+      "name": "BlackSun",
+      "discord": "BlackSun",
+      "linkedin": "https://www.linkedin.com/in/blandine-rondel",
+      "tools": "Claude Code, framework AIDD et du jus de cerveau sous canicule",
+      "piste": "Évaluer le niveau AIDD  en croisant ses pratiques avec des signaux issus de son codebase : harness (rules, skills…), tests, architecture et qualité du code. L’objectif est d’expliquer le niveau obtenu, d’identifier les freins à davantage d’autonomie et de proposer des pistes pour atteindre le niveau suivant.\n\nPremière version sous forme de CLI : questionnaire ciblé + audit automatique du repository, évalués à partir d’une grille configurable.",
+      "registered_at": "2026-08-12T15:18:16Z",
+      "issue": 14
     }
   ]
 }
