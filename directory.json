@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-12T15:18:29.307Z",
-  "count": 5,
+  "updated_at": "2026-08-13T08:13:05.997Z",
+  "count": 6,
   "participants": [
     {
       "github": "hoklims",
@@ -52,6 +52,16 @@
       "piste": "Évaluer le niveau AIDD  en croisant ses pratiques avec des signaux issus de son codebase : harness (rules, skills…), tests, architecture et qualité du code. L’objectif est d’expliquer le niveau obtenu, d’identifier les freins à davantage d’autonomie et de proposer des pistes pour atteindre le niveau suivant.\n\nPremière version sous forme de CLI : questionnaire ciblé + audit automatique du repository, évalués à partir d’une grille configurable.",
       "registered_at": "2026-08-12T15:18:16Z",
       "issue": 14
+    },
+    {
+      "github": "FlorianFrancese",
+      "name": "Florian",
+      "discord": "Ecipi",
+      "linkedin": "https://www.linkedin.com/in/florian-francese",
+      "tools": "Claude Code",
+      "piste": null,
+      "registered_at": "2026-08-13T08:12:53Z",
+      "issue": 15
     }
   ]
 }
