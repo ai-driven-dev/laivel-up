@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-13T14:07:31.704Z",
-  "count": 7,
+  "updated_at": "2026-08-13T14:34:44.777Z",
+  "count": 8,
   "participants": [
     {
       "github": "hoklims",
@@ -72,6 +72,16 @@
       "piste": null,
       "registered_at": "2026-08-13T14:07:14Z",
       "issue": 16
+    },
+    {
+      "github": "jomour",
+      "name": "JMourier",
+      "discord": "Holystic",
+      "linkedin": null,
+      "tools": "Cursor",
+      "piste": null,
+      "registered_at": "2026-08-13T14:34:32Z",
+      "issue": 17
     }
   ]
 }
