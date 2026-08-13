@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-13T14:34:44.777Z",
-  "count": 8,
+  "updated_at": "2026-08-13T17:45:14.329Z",
+  "count": 9,
   "participants": [
     {
       "github": "hoklims",
@@ -82,6 +82,16 @@
       "piste": null,
       "registered_at": "2026-08-13T14:34:32Z",
       "issue": 17
+    },
+    {
+      "github": "jbbaillet85",
+      "name": "Jean-Baptiste Baillet",
+      "discord": "jbbaillet",
+      "linkedin": "https://www.linkedin.com/in/jean-baptiste-baillet",
+      "tools": null,
+      "piste": null,
+      "registered_at": "2026-08-13T17:45:04Z",
+      "issue": 18
     }
   ]
 }
