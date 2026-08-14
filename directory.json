@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-13T17:45:14.329Z",
-  "count": 9,
+  "updated_at": "2026-08-14T11:26:00.665Z",
+  "count": 10,
   "participants": [
     {
       "github": "hoklims",
@@ -92,6 +92,16 @@
       "piste": null,
       "registered_at": "2026-08-13T17:45:04Z",
       "issue": 18
+    },
+    {
+      "github": "jdelauney",
+      "name": "Jérôme",
+      "discord": "jerome0777",
+      "linkedin": "https://www.linkedin.com/in/j%C3%A9r%C3%B4me-delauney",
+      "tools": "Claude code, framework AIDD, impeccable, vscode, terminal",
+      "piste": null,
+      "registered_at": "2026-08-14T11:25:51Z",
+      "issue": 19
     }
   ]
 }
