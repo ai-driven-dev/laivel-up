@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-14T11:26:00.665Z",
-  "count": 10,
+  "updated_at": "2026-08-15T05:02:44.196Z",
+  "count": 11,
   "participants": [
     {
       "github": "hoklims",
@@ -102,6 +102,16 @@
       "piste": null,
       "registered_at": "2026-08-14T11:25:51Z",
       "issue": 19
+    },
+    {
+      "github": "SonnyHardy",
+      "name": "Sonny",
+      "discord": "sonny_hardy",
+      "linkedin": null,
+      "tools": "Claude Code, Jetbrains AI",
+      "piste": null,
+      "registered_at": "2026-08-15T05:02:31Z",
+      "issue": 20
     }
   ]
 }
