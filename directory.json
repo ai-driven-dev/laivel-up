@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-15T17:53:20.064Z",
-  "count": 12,
+  "updated_at": "2026-08-15T19:11:03.685Z",
+  "count": 13,
   "participants": [
     {
       "github": "hoklims",
@@ -122,6 +122,16 @@
       "piste": null,
       "registered_at": "2026-08-15T17:53:10Z",
       "issue": 21
+    },
+    {
+      "github": "IcheNouri",
+      "name": "Nouri",
+      "discord": "nouriiche",
+      "linkedin": "https://www.linkedin.com/in/nour-el-yakine-i-a62513119",
+      "tools": "Claude Code",
+      "piste": null,
+      "registered_at": "2026-08-15T19:10:53Z",
+      "issue": 22
     }
   ]
 }
