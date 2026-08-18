@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-15T19:11:03.685Z",
-  "count": 13,
+  "updated_at": "2026-08-18T12:20:34.884Z",
+  "count": 14,
   "participants": [
     {
       "github": "hoklims",
@@ -132,6 +132,16 @@
       "piste": null,
       "registered_at": "2026-08-15T19:10:53Z",
       "issue": 22
+    },
+    {
+      "github": "honorebayzelon",
+      "name": "Honore",
+      "discord": "honore_BHCloud",
+      "linkedin": "https://www.linkedin.com/in/honor%C3%A9-bayzelon-33b850a6",
+      "tools": "Claude Code, Codex",
+      "piste": null,
+      "registered_at": "2026-08-18T12:20:20Z",
+      "issue": 23
     }
   ]
 }
