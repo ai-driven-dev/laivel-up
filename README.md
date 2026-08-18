@@ -102,7 +102,7 @@ Et pour tout le monde, pas seulement le premier : les projets sont publiés, com
 |  | Quand | Quoi |
 | :---: | :--- | :--- |
 | ✍️ | **Maintenant** | Tu t'inscris |
-| 📊 | **Mercredi 19 août** | On publie la grille de niveaux |
+| 📊 | **Mercredi 19 août** | [La grille de niveaux](./levels/aidd.md) est publiée |
 | 🎥 | **Mercredi 26 août** | On installe le framework AIDD en direct |
 | 🚀 | **Vendredi 28, 12h** | Le sujet tombe dans ce dépôt |
 | 🔨 | **Tout le week-end** | Tu construis, à ton rythme |
