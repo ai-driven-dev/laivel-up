@@ -1,52 +1,121 @@
 name: Garde-fou
 
-# Ce dépôt est public et contient le matériel d'évaluation.
-# Deux erreurs seraient irrattrapables : publier les profils cachés,
-# ou publier les réponses attendues. Ce workflow les rend impossibles.
+# Ce dépôt est public et voisine du matériel d'évaluation qui, lui, ne l'est
+# pas. Deux erreurs seraient irrattrapables : publier un profil que le jury
+# garde, ou publier les réponses attendues.
+#
+# Le contrôle principal est une **liste blanche**, pas une liste noire. Une
+# liste noire oblige à écrire ici le nom des choses à cacher, c'est-à-dire à
+# publier la nomenclature du confidentiel dans le dépôt public — ce que ce
+# fichier faisait jusqu'au 20 août. Une liste blanche dit seulement ce qui a le
+# droit d'exister, et refuse tout le reste sans le nommer.
 
 on:
   push:
   pull_request:
 
 jobs:
-  fuite:
-    name: Rien de confidentiel n'a fuité
+  inventaire:
+    name: Rien d'inattendu dans le dépôt
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # L'historique complet. Un fichier commité puis supprimé au commit
+          # suivant reste servi indéfiniment par l'API et par les forks : c'est
+          # le seul cas qu'on ne peut pas rattraper, et l'arbre courant ne le
+          # montre pas.
+          fetch-depth: 0
 
-      - name: Aucun fichier ni dossier confidentiel
+      - name: Seuls les chemins attendus existent
         run: |
           set -euo pipefail
-          interdits=$(find . -path ./.git -prune -o \
-            \( -name 'profiles-caches' -o -name '_*' -o -iname '*CORE-TEAM*' \) -print)
-          if [ -n "$interdits" ]; then
-            echo "::error::Matériel confidentiel détecté dans un dépôt public :"
-            echo "$interdits"
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|p0[1-4]/)'
+          intrus=$(git ls-files | grep -vE "$autorises" || true)
+          if [ -n "$intrus" ]; then
+            echo "::error::Des chemins non prévus sont suivis par git :"
+            echo "$intrus"
+            echo "Ajouter le chemin à la liste blanche ci-dessus s'il est légitime."
             exit 1
           fi
-          echo "Aucun fichier confidentiel."
+          echo "Inventaire conforme."
 
-      - name: Aucune réponse de profil caché dans le contenu
+      - name: Aucun chemin réservé, dans tout l'historique
         run: |
           set -euo pipefail
-          # ⚠️ CETTE PLAGE DOIT SUIVRE LE NOMBRE DE PROFILS CACHÉS.
-          # Aujourd'hui : p01 à p04 publics, p05 à p08 cachés. Un cinquième
-          # profil caché impose d'étendre `p0[5-8]` ici, sinon il passe.
-          # (Un motif attrape-tout `p[0-9][0-9]` a été écarté : il se déclenche
-          # sur du texte légitime, et un garde-fou qui crie à tort se fait
-          # désactiver par la personne qui publie à midi sous pression.)
+          # Les dossiers de profil au-delà de ceux qui sont publiés sont
+          # réservés. Le contrôle porte sur tous les objets jamais commités,
+          # pas seulement sur l'arbre courant.
+          reserves=$(git rev-list --objects --all \
+            | awk '{ $1=""; print substr($0,2) }' \
+            | grep -E 'p(0[5-9]|[1-9][0-9])(/|$)' || true)
+          if [ -n "$reserves" ]; then
+            echo "::error::Un chemin réservé apparaît dans l'historique :"
+            echo "$reserves"
+            exit 1
+          fi
+          echo "Aucun chemin réservé."
+
+      - name: Aucun identifiant réservé dans le contenu
+        run: |
+          set -euo pipefail
+          # Tous les fichiers texte, et non plus les seuls `.md` et `.json` :
+          # un commentaire dans un `.ts` ou dans un `Makefile` publié passait.
           #
-          # `directory.json` est exclu : il contient des pseudos GitHub que nous
-          # ne choisissons pas. Un login comme `dev-p07` déclencherait l'alerte
-          # et bloquerait une inscription parfaitement légitime.
-          if grep -rInE '\bp0[5-8]\b' --include='*.md' --include='*.json' \
-               --exclude-dir=.git --exclude-dir=.github \
-               --exclude=directory.json . ; then
-            echo "::error::Un profil caché est mentionné. Seuls p01 à p04 sont publics."
+          # `directory.json` est exclu : il porte des pseudos GitHub que nous ne
+          # choisissons pas, et un login qui ressemblerait au motif bloquerait
+          # une inscription parfaitement légitime.
+          if grep -rInE --binary-files=without-match '\bp(0[5-9]|[1-9][0-9])\b' \
+               --exclude-dir=.git --exclude=directory.json . ; then
+            echo "::error::Un identifiant de profil réservé est mentionné."
             exit 1
           fi
-          echo "Aucune mention de profil caché."
+          echo "Aucun identifiant réservé."
+
+      - name: Aucun caractère de contrôle
+        run: |
+          set -euo pipefail
+          # Le mode de panne du 19 août : des U+001F invisibles dans un éditeur,
+          # rendus par des losanges sur GitHub. Aucun contrôle ne les voyait, et
+          # c'est la personne qui a lu la page en production qui les a trouvés.
+          sales=$(grep -rlIP '[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]|\xef\xbf\xbd' \
+            --exclude-dir=.git . || true)
+          if [ -n "$sales" ]; then
+            echo "::error::Caractères de contrôle détectés dans :"
+            echo "$sales"
+            exit 1
+          fi
+          echo "Aucun caractère de contrôle."
+
+      - name: L'en-tête du référentiel est du YAML valide
+        run: |
+          set -euo pipefail
+          # Il a été publié cassé le 19 août : `label` et `rank` indentés au
+          # même niveau que le tiret de la séquence. Le sujet demande aux
+          # participants d'y lire les `level_id` ; tout parseur standard échoue.
+          # Notre lecteur maison, lui, tolérait — donc rien ne l'a vu.
+          # PyYAML est présent sur les images GitHub, mais l'installer coûte
+          # une seconde et évite qu'un changement d'image transforme ce
+          # contrôle en échec inexpliqué un vendredi midi.
+          python3 -m pip install --quiet --disable-pip-version-check pyyaml
+          if [ -f levels/aidd.md ]; then
+            python3 - <<'PY'
+          import re, sys, yaml
+          texte = open('levels/aidd.md', encoding='utf-8').read()
+          entete = re.match(r'^---\n(.*?)\n---', texte, re.S)
+          if not entete:
+              sys.exit("en-tête YAML introuvable dans levels/aidd.md")
+          data = yaml.safe_load(entete.group(1))
+          if not data.get('id') or not data.get('levels'):
+              sys.exit("l'en-tête ne porte pas `id` et `levels`")
+          for niveau in data['levels']:
+              if 'id' not in niveau or 'rank' not in niveau:
+                  sys.exit(f"niveau incomplet : {niveau}")
+          print(f"{len(data['levels'])} niveaux lus par PyYAML.")
+          PY
+          else
+            echo "levels/aidd.md absent, rien à contrôler."
+          fi
 
   tests:
     name: L'annuaire se comporte comme prévu
@@ -68,7 +137,7 @@ jobs:
 
       # Le binaire et non `gitleaks/gitleaks-action`, qui exige une licence
       # payante dès que le dépôt appartient à une organisation. Même outil,
-      # même règles, sans la facture ni un secret de plus à tenir.
+      # mêmes règles, sans la facture ni un secret de plus à tenir.
       - name: Scanner l'historique
         env:
           VERSION: 8.28.0
@@ -77,4 +146,3 @@ jobs:
           curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" \
             | tar -xz gitleaks
           ./gitleaks git --no-banner --redact --exit-code 1 .
-
