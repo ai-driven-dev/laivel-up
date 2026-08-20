@@ -1,27 +1,27 @@
 ---
 id: aidd
 levels:
- - id: white
- label: "❖ White"
- rank: 0
- - id: red
- label: "🔺 Red"
- rank: 1
- - id: blue
- label: "🔹 Blue"
- rank: 2
- - id: green
- label: "🟢 Green"
- rank: 3
- - id: copper
- label: "🥉 Copper"
- rank: 4
- - id: silver
- label: "🥈 Silver"
- rank: 5
- - id: gold
- label: "🥇 Gold"
- rank: 6
+  - id: white
+    label: "❖ White"
+    rank: 0
+  - id: red
+    label: "🔺 Red"
+    rank: 1
+  - id: blue
+    label: "🔹 Blue"
+    rank: 2
+  - id: green
+    label: "🟢 Green"
+    rank: 3
+  - id: copper
+    label: "🥉 Copper"
+    rank: 4
+  - id: silver
+    label: "🥈 Silver"
+    rank: 5
+  - id: gold
+    label: "🥇 Gold"
+    rank: 6
 ---
 # Référentiel AIDD
 
