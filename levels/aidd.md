@@ -36,10 +36,10 @@ La qualité attendue est la même qu'en codant sans IA.
 
 | Axe | Ce qu'il mesure |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Taille** | La plus grosse feature livrée avec l'IA. **S** peu de complexité · **M** complexité moyenne · **L** multi-étapes · **XL** multi-modules |
+| **Taille** | La taille habituelle des features livrées avec l'IA, pas la plus grosse jamais faite. **S** peu de complexité · **M** complexité moyenne · **L** multi-étapes · **XL** multi-modules |
 | **Harness** | Ce que la personne a mis en place autour du modèle. **Context engineering** : ce que l'IA sait (mémoire, architecture, conventions, etc). **Behavior** : comment elle agit (règles, agents, hooks, guardrails, etc). **Boucles** : un script relance l'IA tant qu'une commande du projet échoue, jusqu'à ce qu'elle passe |
-| **Intervention** | Quand la personne intervient dans le travail de l'IA. La qualité attendue est la même qu'en codant à la main : monter d'un niveau, c'est reprendre moins pour l'atteindre |
-| **En parallèle** | Combien de chantiers avancent en même temps |
+| **Intervention** | Quand la personne intervient dans le travail de l'IA. Cadrer, c'est choisir la tâche et dire ce qui est attendu. La qualité attendue est la même qu'en codant à la main : monter d'un niveau, c'est reprendre moins pour l'atteindre |
+| **En parallèle** | Combien de chantiers avancent en même temps, habituellement. Un pic isolé ne compte pas |
 
 
 ## La grille
@@ -52,11 +52,13 @@ La qualité attendue est la même qu'en codant sans IA.
 | `🔹 Blue` | M | context engineering | après coup, sur une partie | 1 | PR de taille M, quelques commits correctifs par PR, mémoire projet présente et maintenue |
 | `🟢 Green` | L | context engineering, behavior | aux étapes clés | 1 | PR de taille L, presque aucun commit correctif, règles et agents versionnés dans le dépôt |
 | `🥉 Copper` | L-XL | context engineering, behavior | aux étapes clés | 3 | PR de taille L et XL, presque aucun commit correctif, plusieurs branches ouvertes le même jour et menées jusqu'au bout |
-| `🥈 Silver` | L-XL | context engineering, behavior, boucles | jamais | 3 | PR de taille L et XL sans aucun commit d'un humain, relance automatique de l'IA tant que les critères de validation échouent |
-| `🥇 Gold` | L-XL | context engineering, behavior, boucles | jamais | 3 | Les agents prennent les tâches en autonomie, plusieurs PR par jour sans aucune intervention humaine |
+| `🥈 Silver` | L-XL | context engineering, behavior, boucles | jamais, une fois la tâche cadrée | 3 | PR de taille L et XL sans aucun commit d'un humain, relance automatique de l'IA tant que les critères de validation échouent |
+| `🥇 Gold` | L-XL | context engineering, behavior, boucles | jamais, cadrage compris | 3 | Les agents prennent les tâches en autonomie, plusieurs PR par jour sans aucune intervention humaine |
 
 
 ***La règle :** Un niveau n'est atteint que si **tous ses axes** le sont.*
+
+*Chaque cellule est un minimum, pas une valeur exacte : mener quatre chantiers de front satisfait la case « 3 ».*
 
 ## Hors périmètre
 
