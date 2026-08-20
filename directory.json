@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-20T11:31:05.115Z",
-  "count": 16,
+  "updated_at": "2026-08-20T20:29:24.292Z",
+  "count": 17,
   "participants": [
     {
       "github": "hoklims",
@@ -162,6 +162,16 @@
       "piste": null,
       "registered_at": "2026-08-20T11:30:56Z",
       "issue": 26
+    },
+    {
+      "github": "goumies-creative",
+      "name": "Goumies",
+      "discord": "romy_goumies",
+      "linkedin": "https://www.linkedin.com/in/romy-goumies",
+      "tools": "OpenCode via Warp, framework AIDD, plugin Compound Engineering, VS Code, mon système IA (onthologie que je visualise via Obsidian), modèle agnostique",
+      "piste": "Un CLI d'évaluation AIDD qui cadre le développeur comme la Décodeuse (mon offre clé avec Goumies Creative) cadre un fondateur :\n- niveau via min() sur 4 axes,\n- confiance par axe, \n- refus de trancher quand les données mentent, avec la question à poser à la place.",
+      "registered_at": "2026-08-20T20:29:14Z",
+      "issue": 27
     }
   ]
 }
