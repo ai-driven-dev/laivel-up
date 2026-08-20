@@ -34,6 +34,19 @@ body:
       placeholder: https://github.com/toi/ton-projet
     validations:
       required: true
+  - type: textarea
+    id: lancement
+    attributes:
+      label: Comment on lance ton outil
+      description: >-
+        Ce qu'il faut installer, puis comment on s'en sert. Deux lignes suffisent
+        si deux lignes suffisent. C'est la seule chose dont on a vraiment besoin
+        pour pouvoir regarder ton travail.
+      placeholder: |
+        pip install -r requirements.txt
+        python analyse.py --profil profiles/p02
+    validations:
+      required: true
   - type: input
     id: demo
     attributes:
@@ -55,4 +68,6 @@ body:
       label: Avant d'envoyer
       options:
         - label: Aucune clé d'API n'est présente dans le code ni dans l'historique Git
+          required: true
+        - label: Mon dépôt est public et sous licence MIT
           required: true
