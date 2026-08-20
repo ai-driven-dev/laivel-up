@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-19T17:04:35.170Z",
-  "count": 15,
+  "updated_at": "2026-08-20T11:31:05.115Z",
+  "count": 16,
   "participants": [
     {
       "github": "hoklims",
@@ -152,6 +152,16 @@
       "piste": null,
       "registered_at": "2026-08-19T17:04:25Z",
       "issue": 25
+    },
+    {
+      "github": "TresorAlad",
+      "name": "Trésor ALADE",
+      "discord": "byte_master",
+      "linkedin": "https://www.linkedin.com/in/tresor-alade",
+      "tools": "Cursor",
+      "piste": null,
+      "registered_at": "2026-08-20T11:30:56Z",
+      "issue": 26
     }
   ]
 }
