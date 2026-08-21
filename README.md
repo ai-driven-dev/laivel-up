@@ -115,9 +115,9 @@ Et pour tout le monde, pas seulement le premier : les projets sont publiés, com
 
 - 🕒 &nbsp; **Tu travailles quand tu veux.** Aucune présence n'est demandée de ton côté.
 - 🎯 &nbsp; **Une seule échéance :** le rendu, lundi midi.
-- 💬 &nbsp; **Le [Discord](https://discord.gg/VNDZnER8h7) reste ouvert** du début à la fin.
+- 💬 &nbsp; **Le [Discord](https://discord.gg/ebp4TahhRb) reste ouvert** du début à la fin.
 
-Et voilà quand on est en [vocal](https://discord.gg/hB7JkN8EPe) pour répondre :
+Et voilà quand on est en [vocal](https://discord.gg/3RPutSYvBu) pour répondre :
 
 | Quand | Quoi |
 | --- | --- |
