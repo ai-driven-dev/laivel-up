@@ -36,7 +36,7 @@ La qualité attendue est la même qu'en codant sans IA.
 
 | Axe | Ce qu'il mesure |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Taille** | La taille habituelle des features livrées avec l'IA, pas la plus grosse jamais faite. **S** peu de complexité · **M** complexité moyenne · **L** multi-étapes · **XL** multi-modules |
+| **Taille** | La taille habituelle des features livrées avec l'IA, pas la plus grosse jamais faite. **S** petite ou triviale · **M** complexité moyenne · **L** multi-étapes · **XL** multi-modules |
 | **Harness** | Ce que la personne a mis en place autour du modèle. **Context engineering** : ce que l'IA sait (mémoire, architecture, conventions, etc). **Behavior** : comment elle agit (règles, agents, hooks, guardrails, etc). **Boucles** : un script relance l'IA tant qu'une commande du projet échoue, jusqu'à ce qu'elle passe |
 | **Intervention** | Quand la personne intervient dans le travail de l'IA. Cadrer, c'est choisir la tâche et dire ce qui est attendu. La qualité attendue est la même qu'en codant à la main : monter d'un niveau, c'est reprendre moins pour l'atteindre |
 | **En parallèle** | Combien de chantiers avancent en même temps, habituellement. Un pic isolé ne compte pas |
@@ -47,7 +47,7 @@ La qualité attendue est la même qu'en codant sans IA.
 
 | Niveau | Taille | Harness | Intervention | En parallèle | Ce qu'on observe |
 | ----------- | ------ | -------------------------------------- | --------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `❖ White` | — | rien | — | 0 | Aucun fichier de contexte, aucun commit signé par un assistant |
+| `❖ White` | aucune | rien | — | 0 | Aucun fichier de contexte, aucun commit signé par un assistant |
 | `🔺 Red` | S | prompts | après coup, sur la majorité | 1 | PR de taille S, beaucoup de commits correctifs après ouverture, pas de fichier de contexte |
 | `🔹 Blue` | M | context engineering | après coup, sur une partie | 1 | PR de taille M, quelques commits correctifs par PR, mémoire projet présente et maintenue |
 | `🟢 Green` | L | context engineering, behavior | aux étapes clés | 1 | PR de taille L, presque aucun commit correctif, règles et agents versionnés dans le dépôt |
@@ -59,6 +59,8 @@ La qualité attendue est la même qu'en codant sans IA.
 ***La règle :** Un niveau n'est atteint que si **tous ses axes** le sont.*
 
 *Chaque cellule est un minimum, pas une valeur exacte : mener quatre chantiers de front satisfait la case « 3 ».*
+
+*La colonne « Ce qu'on observe » illustre, elle ne décide pas.*
 
 ## Hors périmètre
 
