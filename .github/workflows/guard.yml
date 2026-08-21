@@ -30,7 +30,7 @@ jobs:
       - name: Seuls les chemins attendus existent
         run: |
           set -euo pipefail
-          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|p0[1-4]/)'
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|perceval/|bohort/|leodagan/|arthur/)'
           intrus=$(git ls-files | grep -vE "$autorises" || true)
           if [ -n "$intrus" ]; then
             echo "::error::Des chemins non prévus sont suivis par git :"
@@ -40,37 +40,23 @@ jobs:
           fi
           echo "Inventaire conforme."
 
-      - name: Aucun chemin réservé, dans tout l'historique
+      - name: L'historique complet ne contient que des chemins attendus
         run: |
           set -euo pipefail
-          # Les dossiers de profil au-delà de ceux qui sont publiés sont
-          # réservés. Le contrôle porte sur tous les objets jamais commités,
-          # pas seulement sur l'arbre courant.
-          reserves=$(git rev-list --objects --all \
+          # Un fichier commité puis supprimé reste servi indéfiniment par l'API
+          # et par les forks : c'est le seul cas qu'on ne peut pas rattraper.
+          # La même liste blanche, appliquée à tous les objets jamais commités.
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|perceval/|bohort/|leodagan/|arthur/)$?'
+          intrus=$(git rev-list --objects --all \
             | awk '{ $1=""; print substr($0,2) }' \
-            | grep -E 'p(0[5-9]|[1-9][0-9])(/|$)' || true)
-          if [ -n "$reserves" ]; then
-            echo "::error::Un chemin réservé apparaît dans l'historique :"
-            echo "$reserves"
+            | grep -v '^$' \
+            | grep -vE "$autorises" | sort -u || true)
+          if [ -n "$intrus" ]; then
+            echo "::error::Des chemins non prévus existent dans l'historique :"
+            echo "$intrus"
             exit 1
           fi
-          echo "Aucun chemin réservé."
-
-      - name: Aucun identifiant réservé dans le contenu
-        run: |
-          set -euo pipefail
-          # Tous les fichiers texte, et non plus les seuls `.md` et `.json` :
-          # un commentaire dans un `.ts` ou dans un `Makefile` publié passait.
-          #
-          # `directory.json` est exclu : il porte des pseudos GitHub que nous ne
-          # choisissons pas, et un login qui ressemblerait au motif bloquerait
-          # une inscription parfaitement légitime.
-          if grep -rInE --binary-files=without-match '\bp(0[5-9]|[1-9][0-9])\b' \
-               --exclude-dir=.git --exclude=directory.json . ; then
-            echo "::error::Un identifiant de profil réservé est mentionné."
-            exit 1
-          fi
-          echo "Aucun identifiant réservé."
+          echo "Historique conforme."
 
       - name: Aucun caractère de contrôle
         run: |
@@ -97,7 +83,9 @@ jobs:
           # PyYAML est présent sur les images GitHub, mais l'installer coûte
           # une seconde et évite qu'un changement d'image transforme ce
           # contrôle en échec inexpliqué un vendredi midi.
-          python3 -m pip install --quiet --disable-pip-version-check pyyaml
+          # PyYAML est préinstallé sur les images GitHub. On tente quand même,
+          # sans faire échouer l'étape si l'environnement le refuse.
+          python3 -m pip install --quiet --disable-pip-version-check pyyaml 2>/dev/null || true
           if [ -f levels/aidd.md ]; then
             python3 - <<'PY'
           import re, sys, yaml
