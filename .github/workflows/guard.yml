@@ -46,7 +46,9 @@ jobs:
           # Un fichier commité puis supprimé reste servi indéfiniment par l'API
           # et par les forks : c'est le seul cas qu'on ne peut pas rattraper.
           # La même liste blanche, appliquée à tous les objets jamais commités.
-          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|perceval/|bohort/|leodagan/|arthur/)$?'
+          # `rev-list --objets` liste aussi les dossiers, sans slash final :
+          # le motif doit accepter `assets` comme `assets/laivel-up.svg`.
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^(\.github|assets|levels)(/.*)?$|^profiles(/(README\.md|(perceval|bohort|leodagan|arthur)(/.*)?))?$'
           intrus=$(git rev-list --objects --all \
             | awk '{ $1=""; print substr($0,2) }' \
             | grep -v '^$' \
