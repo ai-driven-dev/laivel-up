@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-22T09:15:04.737Z",
-  "count": 18,
+  "updated_at": "2026-08-22T15:35:31.801Z",
+  "count": 19,
   "participants": [
     {
       "github": "hoklims",
@@ -182,6 +182,16 @@
       "piste": null,
       "registered_at": "2026-08-22T09:14:52Z",
       "issue": 28
+    },
+    {
+      "github": "JonaPlaz",
+      "name": "Jonathan Plazanet",
+      "discord": "jonaplaz",
+      "linkedin": "https://www.linkedin.com/in/jonathan-plazanet",
+      "tools": "Claude Code, Codex",
+      "piste": null,
+      "registered_at": "2026-08-22T15:35:22Z",
+      "issue": 29
     }
   ]
 }
