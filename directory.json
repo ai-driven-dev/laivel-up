@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-20T20:29:24.292Z",
-  "count": 17,
+  "updated_at": "2026-08-22T09:15:04.737Z",
+  "count": 18,
   "participants": [
     {
       "github": "hoklims",
@@ -172,6 +172,16 @@
       "piste": "Un CLI d'évaluation AIDD qui cadre le développeur comme la Décodeuse (mon offre clé avec Goumies Creative) cadre un fondateur :\n- niveau via min() sur 4 axes,\n- confiance par axe, \n- refus de trancher quand les données mentent, avec la question à poser à la place.",
       "registered_at": "2026-08-20T20:29:14Z",
       "issue": 27
+    },
+    {
+      "github": "ake-deviant",
+      "name": "Akeem",
+      "discord": "Akeem",
+      "linkedin": null,
+      "tools": "Claude code, codex, nodeJS",
+      "piste": null,
+      "registered_at": "2026-08-22T09:14:52Z",
+      "issue": 28
     }
   ]
 }
