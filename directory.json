@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-22T15:35:31.801Z",
-  "count": 19,
+  "updated_at": "2026-08-23T19:41:47.912Z",
+  "count": 20,
   "participants": [
     {
       "github": "hoklims",
@@ -192,6 +192,16 @@
       "piste": null,
       "registered_at": "2026-08-22T15:35:22Z",
       "issue": 29
+    },
+    {
+      "github": "hfarhat1982",
+      "name": "HK",
+      "discord": "Hk",
+      "linkedin": null,
+      "tools": "Github copilot",
+      "piste": "Je ne sais pas encore",
+      "registered_at": "2026-08-23T19:41:38Z",
+      "issue": 30
     }
   ]
 }
