@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-23T19:41:47.912Z",
-  "count": 20,
+  "updated_at": "2026-08-24T07:47:24.804Z",
+  "count": 21,
   "participants": [
     {
       "github": "hoklims",
@@ -202,6 +202,16 @@
       "piste": "Je ne sais pas encore",
       "registered_at": "2026-08-23T19:41:38Z",
       "issue": 30
+    },
+    {
+      "github": "CharnaceRegis",
+      "name": "RCE",
+      "discord": "donutBoy",
+      "linkedin": "https://www.linkedin.com/in/r%C3%A9gis-charnac%C3%A9-42775198",
+      "tools": "Zed, claude code",
+      "piste": "Au doigt mouillé",
+      "registered_at": "2026-08-24T07:47:15Z",
+      "issue": 31
     }
   ]
 }
