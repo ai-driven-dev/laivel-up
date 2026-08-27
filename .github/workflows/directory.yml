@@ -27,14 +27,64 @@ jobs:
       || contains(github.event.issue.labels.*.name, 'desinscription')
     runs-on: ubuntu-latest
     steps:
+      # Les inscriptions ferment à l'ouverture du hackathon. Le dépôt reste
+      # public et le formulaire reste atteignable — on ne peut pas retirer un
+      # gabarit d'issue à quelqu'un qui a le lien — donc c'est ici que la
+      # fermeture se joue, pas dans l'interface.
+      #
+      # C'est la date de création de l'issue qui compte, jamais celle du run :
+      # même règle que pour les rendus, et elle ne dépend pas de la charge des
+      # runners GitHub.
+      #
+      # Une désinscription n'est jamais refusée : quelqu'un qui ne peut plus
+      # venir doit pouvoir se retirer jusqu'au bout.
+      #
+      # L'échéance est écrite ici en clair. Elle vaut `opensAt` de
+      # `ai-driven-dev.fr/src/data/hackathon.ts`, dans un autre dépôt : les deux
+      # doivent bouger ensemble si l'édition est décalée.
+      - name: Contrôler l'échéance
+        id: echeance
+        env:
+          CREEE_LE: ${{ github.event.issue.created_at }}
+          INSCRIPTION: ${{ contains(github.event.issue.labels.*.name, 'inscription') }}
+        run: |
+          limite='2026-08-28T12:00:00+02:00'
+          # Les deux conversions peuvent échouer — format inattendu, `date` d'une
+          # autre image. On accepte alors l'inscription : perdre quelqu'un de
+          # légitime coûte plus cher que d'en laisser passer un en retard.
+          creee=$(date -u -d "$CREEE_LE" +%s 2>/dev/null || true)
+          echeance=$(date -u -d "$limite" +%s 2>/dev/null || true)
+          if [ -z "$creee" ] || [ -z "$echeance" ]; then
+            echo "::warning::date illisible ($CREEE_LE), inscription acceptée par défaut"
+            echo 'tardive=false' >> "$GITHUB_OUTPUT"
+          elif [ "$INSCRIPTION" = 'true' ] && [ "$creee" -ge "$echeance" ]; then
+            echo "Inscription ouverte le $CREEE_LE, après $limite : refusée."
+            echo 'tardive=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'tardive=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Répondre à une inscription tardive
+        if: steps.echeance.outputs.tardive == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Les inscriptions sont closes : elles fermaient à l'ouverture, le vendredi 28 août à midi. Tu n'apparaîtras pas dans l'annuaire et ton rendu ne sera pas retenu pour cette édition.
+
+          Le sujet reste public et le Discord est ouvert — rien n'empêche de faire l'exercice dans ton coin, et on y annoncera la prochaine édition."
+          gh issue close "${{ github.event.issue.number }}"
+
       - uses: actions/checkout@v4
+        if: steps.echeance.outputs.tardive != 'true'
 
       - uses: actions/setup-node@v4
+        if: steps.echeance.outputs.tardive != 'true'
         with:
           node-version: '22'
 
       - name: Mettre à jour l'annuaire
         id: update
+        if: steps.echeance.outputs.tardive != 'true'
         run: |
           if [ "${{ contains(github.event.issue.labels.*.name, 'inscription') }}" = "true" ]; then
             node .github/scripts/update-directory.mjs inscription
@@ -43,6 +93,7 @@ jobs:
           fi
 
       - name: Committer
+        if: steps.echeance.outputs.tardive != 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -52,6 +103,7 @@ jobs:
           git push
 
       - name: Répondre et fermer
+        if: steps.echeance.outputs.tardive != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INSCRIPTION: ${{ contains(github.event.issue.labels.*.name, 'inscription') }}

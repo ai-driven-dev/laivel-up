@@ -6,6 +6,8 @@
 
 [![S'inscrire](https://img.shields.io/badge/S'INSCRIRE-4e4ef9?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=inscription.yml)
 
+<sub><i>Inscriptions jusqu’au vendredi 28 août, 12h — à l’ouverture.</i></sub>
+
 </div>
 
 ## Le sujet
