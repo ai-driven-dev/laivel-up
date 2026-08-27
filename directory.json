@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-26T09:51:13.893Z",
-  "count": 23,
+  "updated_at": "2026-08-27T11:21:17.170Z",
+  "count": 24,
   "participants": [
     {
       "github": "hoklims",
@@ -232,6 +232,16 @@
       "piste": null,
       "registered_at": "2026-08-25T11:18:10Z",
       "issue": 33
+    },
+    {
+      "github": "winterstones",
+      "name": "rjan",
+      "discord": "_winterstones",
+      "linkedin": "https://www.linkedin.com/in/rom-jan",
+      "tools": "vs code antigravity",
+      "piste": null,
+      "registered_at": "2026-08-27T11:21:07Z",
+      "issue": 35
     }
   ]
 }
