@@ -4,11 +4,22 @@
 
 **28 → 31 août 2026** · 72 heures · solo · 100 % distanciel
 
-[![S'inscrire](https://img.shields.io/badge/S'INSCRIRE-4e4ef9?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=inscription.yml)
+[![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
 
-<sub><i>Inscriptions jusqu’au vendredi 28 août, 12h — à l’ouverture.</i></sub>
+<sub><i>Les inscriptions sont closes.</i></sub>
 
 </div>
+
+## 🚀 C'est ouvert
+
+👉 **[Le sujet, les critères et les conventions de rendu](./SUJET.md)**
+
+Et avec :
+
+- **[La grille de niveaux](./levels/aidd.md)**, déjà en ligne depuis le 19. Elle ne change pas : ce sont les développeurs à évaluer qui changent.
+- **[Quatre profils de développeurs fictifs](./profiles/)**, avec le niveau qu'on leur attribue, pour vérifier que ton outil tombe juste.
+
+Le [Discord](https://discord.gg/ebp4TahhRb) est ouvert jusqu'au rendu.
 
 ## Le sujet
 
@@ -93,7 +104,7 @@ Et pour tout le monde, pas seulement le premier : les projets sont publiés, com
 
 <div align="center">
 
-[![S'inscrire](https://img.shields.io/badge/S'INSCRIRE-4e4ef9?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=inscription.yml)
+[![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
 
 <sub><i>Un empêchement ? <a href="https://github.com/ai-driven-dev/laivel-up/issues/new?template=desinscription.yml">Tu te désinscris</a> en dix secondes.</i></sub>
 
@@ -139,14 +150,16 @@ Et voilà quand on est en [vocal](https://discord.gg/3RPutSYvBu) pour répondre 
 > [!TIP]
 > Pas besoin d'interface graphique. Un outil en ligne de commande bien fait vaut mieux qu'une jolie UI vide.
 
-<sub><i>Le formulaire de rendu ouvre le 28. Sa date et son heure font foi.</i></sub>
+[![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
+
+<sub><i>La date et l’heure du formulaire font foi.</i></sub>
 
 <div align="center">
 <br>
 
 **Prêt ?**
 
-[![S'inscrire](https://img.shields.io/badge/S'INSCRIRE-4e4ef9?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=inscription.yml)
+[![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
 
 <sub>Licence MIT — AI-Driven Dev pourra réutiliser ton projet, y compris dans un cadre commercial, en t'attribuant le travail.</sub>
 
