@@ -40,6 +40,31 @@ jobs:
           fi
           echo "Inventaire conforme."
 
+      # Le contrôle de contenu, remis après avoir été perdu.
+      #
+      # La version en liste blanche ne regardait plus que les chemins. Un profil
+      # caché nommé dans un fichier par ailleurs légitime — un README, une
+      # entrée d'annuaire, un commentaire — passait sans rien déclencher.
+      #
+      # Le motif ne nomme pas ce qu'il cherche par une liste littérale ici :
+      # écrire les identifiants cachés dans un fichier public serait exactement
+      # la fuite qu'on veut éviter. Il vise la forme des dossiers privés et le
+      # gabarit d'identifiant, ce qui suffit à attraper une recopie.
+      - name: Aucun profil non public n'est mentionné
+        run: |
+          set -euo pipefail
+          motif='profiles?-cach|_CORE-TEAM|CORE_TEAM|\bp0[5-9]\b|profiles-caches'
+          trouve=$(grep -rInE "$motif" . \
+            --exclude-dir=.git \
+            --exclude=guard.yml \
+            || true)
+          if [ -n "$trouve" ]; then
+            echo "::error::Une référence à du matériel non public a été trouvée :"
+            echo "$trouve"
+            exit 1
+          fi
+          echo "Aucune mention de matériel non public."
+
       - name: L'historique complet ne contient que des chemins attendus
         run: |
           set -euo pipefail
