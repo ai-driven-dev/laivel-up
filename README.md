@@ -147,19 +147,12 @@ Et voilà quand on est en [vocal](https://discord.gg/3RPutSYvBu) pour répondre 
 - 📝 &nbsp; **Ta méthode en une page** : ce que tu mesures, et pourquoi
 - 🎥 &nbsp; **Deux minutes de vidéo** qui le montrent en action
 
-> [!TIP]
-> Pas besoin d'interface graphique. Un outil en ligne de commande bien fait vaut mieux qu'une jolie UI vide.
-
 [![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
 
 <sub><i>La date et l’heure du formulaire font foi.</i></sub>
 
 <div align="center">
 <br>
-
-**Prêt ?**
-
-[![Rendre mon projet](https://img.shields.io/badge/RENDRE_MON_PROJET-1f2328?style=for-the-badge&logoColor=white)](https://github.com/ai-driven-dev/laivel-up/issues/new?template=rendu.yml)
 
 <sub>Licence MIT — AI-Driven Dev pourra réutiliser ton projet, y compris dans un cadre commercial, en t'attribuant le travail.</sub>
 
