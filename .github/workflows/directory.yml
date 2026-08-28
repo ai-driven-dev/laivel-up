@@ -64,10 +64,14 @@ jobs:
             echo 'tardive=false' >> "$GITHUB_OUTPUT"
           fi
 
+      # `gh` déduit le dépôt du dossier courant, et cette étape tourne avant le
+      # checkout : sans `GH_REPO`, elle échoue sur « not a git repository » et
+      # l'inscription tardive reste ouverte, sans réponse. Vu en vrai sur #36.
       - name: Répondre à une inscription tardive
         if: steps.echeance.outputs.tardive == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           gh issue comment "${{ github.event.issue.number }}" --body "Les inscriptions sont closes : elles fermaient à l'ouverture, le vendredi 28 août à midi. Tu n'apparaîtras pas dans l'annuaire et ton rendu ne sera pas retenu pour cette édition.
 

@@ -1,7 +1,7 @@
 {
   "event": "laivel-up",
-  "updated_at": "2026-08-27T11:21:17.170Z",
-  "count": 24,
+  "updated_at": "2026-08-28T10:34:34.601Z",
+  "count": 25,
   "participants": [
     {
       "github": "hoklims",
@@ -242,6 +242,16 @@
       "piste": null,
       "registered_at": "2026-08-27T11:21:07Z",
       "issue": 35
+    },
+    {
+      "github": "Nanaki",
+      "name": "Sébastien NICOLAS",
+      "discord": "sebastien_nicolas",
+      "linkedin": "https://www.linkedin.com/in/s%C3%A9bastien-nicolas-3a981552",
+      "tools": "Claude code, AIDD framework",
+      "piste": null,
+      "registered_at": "2026-08-28T10:33:16Z",
+      "issue": 36
     }
   ]
 }
