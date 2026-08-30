@@ -30,7 +30,7 @@ jobs:
       - name: Seuls les chemins attendus existent
         run: |
           set -euo pipefail
-          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|perceval/|bohort/|leodagan/|arthur/)'
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^\.github/|^assets/|^levels/|^profiles/(README\.md|perceval/|bohort/|leodagan/|arthur/|venec/)'
           intrus=$(git ls-files | grep -vE "$autorises" || true)
           if [ -n "$intrus" ]; then
             echo "::error::Des chemins non prévus sont suivis par git :"
@@ -73,7 +73,7 @@ jobs:
           # La même liste blanche, appliquée à tous les objets jamais commités.
           # `rev-list --objets` liste aussi les dossiers, sans slash final :
           # le motif doit accepter `assets` comme `assets/laivel-up.svg`.
-          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^(\.github|assets|levels)(/.*)?$|^profiles(/(README\.md|(perceval|bohort|leodagan|arthur)(/.*)?))?$'
+          autorises='^(README|SUJET)\.md$|^LICENSE$|^\.gitignore$|^directory\.json$|^(\.github|assets|levels)(/.*)?$|^profiles(/(README\.md|(perceval|bohort|leodagan|arthur|venec)(/.*)?))?$'
           intrus=$(git rev-list --objects --all \
             | awk '{ $1=""; print substr($0,2) }' \
             | grep -v '^$' \
